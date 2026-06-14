@@ -8,30 +8,65 @@
 <body class="certificate-body">
 
   <div class="cert-box">
-    <img src="assets/logo.png" class="cert-logo">
 
-    <h1>Certificate of English Level</h1>
+    <!-- إطار ذهبي -->
+    <div class="cert-border">
 
-    <p>This certifies that</p>
-    <h2 id="certName"></h2>
+      <!-- ختم -->
+      <img src="assets/logo.png" class="cert-seal">
 
-    <p>Age: <span id="certAge"></span></p>
-    <p>Has completed the English Level Test with a score of:</p>
+      <h1>Certificate of English Level</h1>
 
-    <h3 id="certScore"></h3>
-    <h3 id="certLevel"></h3>
+      <p class="cert-sub">This certifies that</p>
 
-    <p>Date: <span id="date"></span></p>
+      <h2 id="certName"></h2>
 
-    <button onclick="window.print()">Print / Save as PDF</button>
+      <p class="cert-sub">Age: <span id="certAge"></span></p>
+
+      <p class="cert-sub">Has successfully completed the English Level Test with a score of:</p>
+
+      <h3 id="certScore"></h3>
+      <h3 id="certLevel"></h3>
+
+      <p class="cert-sub">Date: <span id="date"></span></p>
+
+      <p class="cert-sub">Certificate ID: <span id="certID"></span></p>
+
+      <!-- QR Code -->
+      <div class="qr-box">
+        <img id="qrImage" src="">
+      </div>
+
+      <!-- توقيع -->
+      <div class="signature-box">
+        <p>__________________________</p>
+        <p class="sig-text">Authorized Signature</p>
+      </div>
+
+      <button onclick="window.print()">Print / Save as PDF</button>
+
+    </div>
   </div>
 
   <script>
-    document.getElementById("certName").innerText = localStorage.getItem("username") || "Student";
-    document.getElementById("certAge").innerText = localStorage.getItem("age") || "-";
-    document.getElementById("certScore").innerText = (localStorage.getItem("score") || 0) + "/60";
-    document.getElementById("certLevel").innerText = localStorage.getItem("level") || "";
+    const name = localStorage.getItem("username") || "Student";
+    const age = localStorage.getItem("age") || "-";
+    const score = localStorage.getItem("score") || "0";
+    const level = localStorage.getItem("level") || "N/A";
+
+    document.getElementById("certName").innerText = name;
+    document.getElementById("certAge").innerText = age;
+    document.getElementById("certScore").innerText = score + "/60";
+    document.getElementById("certLevel").innerText = level;
     document.getElementById("date").innerText = new Date().toLocaleDateString();
+
+    // رقم شهادة فريد
+    const certID = "ENG-" + Math.floor(Math.random() * 999999);
+    document.getElementById("certID").innerText = certID;
+
+    // QR Code
+    const qrURL = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${certID}`;
+    document.getElementById("qrImage").src = qrURL;
   </script>
 
 </body>
