@@ -16,15 +16,24 @@
     <button onclick="startQuiz()">Start Test</button>
   </div>
 
-  <script>
-    function startQuiz() {
-      const name = document.getElementById("name").value;
-      const age = document.getElementById("age").value;
+<script>
+  function startQuiz() {
+    const name = document.getElementById("name").value.trim();
+    const age = document.getElementById("age").value.trim();
 
-      if (!name || !age) {
-        alert("Please enter your name and age");
-        return;
-      }
+    if (!name || !age) {
+      alert("Please enter your name and age");
+      return;
+    }
+
+    localStorage.setItem("username", name);
+    localStorage.setItem("age", age);
+    localStorage.setItem("playMusic", "yes");
+
+    window.location.href = "quiz.html";
+  }
+</script>
+
 
       localStorage.setItem("username", name);
       localStorage.setItem("age", age);
