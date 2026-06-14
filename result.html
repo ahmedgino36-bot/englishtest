@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Result</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="result-box">
+    <h2>Your English Level Result</h2>
+
+    <p id="user"></p>
+    <p id="score"></p>
+    <p id="level"></p>
+
+    <button onclick="window.location.href='certificate.html'">View Certificate</button>
+  </div>
+
+  <script>
+    const name = localStorage.getItem("username") || "Student";
+    const age = localStorage.getItem("age") || "-";
+    const score = Number(localStorage.getItem("score") || 0);
+
+    let level = "";
+    if (score <= 15) level = "A1 - Beginner";
+    else if (score <= 30) level = "A2 - Elementary";
+    else if (score <= 45) level = "B1 - Intermediate";
+    else if (score <= 55) level = "B2 - Upper Intermediate";
+    else level = "C1 - Advanced";
+
+    document.getElementById("user").innerText = "Name: " + name + " (Age: " + age + ")";
+    document.getElementById("score").innerText = "Score: " + score + "/60";
+    document.getElementById("level").innerText = "Level: " + level;
+
+    localStorage.setItem("level", level);
+  </script>
+
+</body>
+</html>
