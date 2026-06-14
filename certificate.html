@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Certificate</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="certificate-body">
+
+  <div class="cert-box">
+    <img src="assets/logo.png" class="cert-logo">
+
+    <h1>Certificate of English Level</h1>
+
+    <p>This certifies that</p>
+    <h2 id="certName"></h2>
+
+    <p>Age: <span id="certAge"></span></p>
+    <p>Has completed the English Level Test with a score of:</p>
+
+    <h3 id="certScore"></h3>
+    <h3 id="certLevel"></h3>
+
+    <p>Date: <span id="date"></span></p>
+
+    <button onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <script>
+    document.getElementById("certName").innerText = localStorage.getItem("username") || "Student";
+    document.getElementById("certAge").innerText = localStorage.getItem("age") || "-";
+    document.getElementById("certScore").innerText = (localStorage.getItem("score") || 0) + "/60";
+    document.getElementById("certLevel").innerText = localStorage.getItem("level") || "";
+    document.getElementById("date").innerText = new Date().toLocaleDateString();
+  </script>
+
+</body>
+</html>
