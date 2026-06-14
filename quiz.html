@@ -7,19 +7,18 @@
 </head>
 <body>
 
-  <!-- موسيقى خلفية -->
   <audio id="bgMusic" loop>
-    <source src="assets/music.mp3" type="audio/mpeg">
+    <source src="music.mp3" type="audio/mpeg">
   </audio>
 
-  <img src="assets/logo.png" class="logo">
+  <img src="logo.png" class="logo">
 
   <div class="quiz-container">
     <h2>English Level Test – 60 Questions</h2>
 
-    <!-- تايمر -->
     <div class="top-bar">
       <div class="timer">Time left: <span id="time">30:00</span></div>
+
       <div class="progress-wrapper">
         <div class="progress-bar">
           <div class="progress-fill" id="progressFill"></div>
@@ -28,52 +27,48 @@
       </div>
     </div>
 
-    <!-- السؤال -->
     <div id="questionCard" class="question-card">
       <p id="questionText"></p>
       <div id="optionsContainer"></div>
     </div>
 
-    <!-- أزرار التنقل -->
     <div class="nav-buttons">
       <button id="prevBtn">Previous</button>
       <button id="nextBtn">Next</button>
       <button id="submitBtn" style="display:none;">Submit</button>
     </div>
 
-    <!-- 4 صور معلومات -->
     <div class="info-box">
       <div class="info-item">
-        <img src="assets/info1.png" alt="Info 1">
-        <p>Our test helps you know your English level.</p>
+        <img src="info1.png">
+        <p>Know your English level.</p>
       </div>
       <div class="info-item">
-        <img src="assets/info2.png" alt="Info 2">
-        <p>Based on international CEFR standards.</p>
+        <img src="info2.png">
+        <p>Based on CEFR standards.</p>
       </div>
       <div class="info-item">
-        <img src="assets/info3.png" alt="Info 3">
-        <p>Get an instant certificate after finishing.</p>
+        <img src="info3.png">
+        <p>Instant certificate.</p>
       </div>
       <div class="info-item">
-        <img src="assets/info4.png" alt="Info 4">
-        <p>Perfect for students and professionals.</p>
+        <img src="info4.png">
+        <p>Perfect for students.</p>
       </div>
     </div>
   </div>
 
   <script src="script.js"></script>
+
   <script>
-    // تشغيل الموسيقى تلقائي بعد "ابدأ الاختبار"
     window.addEventListener("load", function () {
       const play = localStorage.getItem("playMusic");
       const music = document.getElementById("bgMusic");
-      if (play === "yes" && music) {
+      if (play === "yes") {
         music.play().catch(() => {});
       }
     });
 
-    // تايمر 30 دقيقة
     let totalSeconds = 30 * 60;
     const timeSpan = document.getElementById("time");
 
@@ -81,7 +76,7 @@
       totalSeconds--;
       if (totalSeconds <= 0) {
         clearInterval(timer);
-        alert("Time is over! Your test will be submitted.");
+        alert("Time is over! Submitting...");
         submitQuiz();
       }
       const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
