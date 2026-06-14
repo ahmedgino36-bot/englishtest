@@ -2,41 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>English Level Test - Login</title>
+  <title>English Test</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="login-box">
-    <h2>Start Your English Level Test</h2>
+    <h2>Start Your English Test</h2>
 
-    <input id="name" type="text" placeholder="Enter your name" required>
-    <input id="age" type="number" placeholder="Enter your age" required>
+    <input type="text" id="name" placeholder="Enter your name">
+    <input type="number" id="age" placeholder="Enter your age">
 
     <button onclick="startQuiz()">Start Test</button>
   </div>
 
-<script>
-  function startQuiz() {
-    const name = document.getElementById("name").value.trim();
-    const age = document.getElementById("age").value.trim();
+  <script>
+    function startQuiz() {
+      const name = document.getElementById("name").value.trim();
+      const age = document.getElementById("age").value.trim();
 
-    if (!name || !age) {
-      alert("Please enter your name and age");
-      return;
-    }
-
-    localStorage.setItem("username", name);
-    localStorage.setItem("age", age);
-    localStorage.setItem("playMusic", "yes");
-
-    window.location.href = "quiz.html";
-  }
-</script>
-
+      if (!name || !age) {
+        alert("Please enter your name and age");
+        return;
+      }
 
       localStorage.setItem("username", name);
       localStorage.setItem("age", age);
+      localStorage.setItem("playMusic", "yes");
 
       window.location.href = "quiz.html";
     }
